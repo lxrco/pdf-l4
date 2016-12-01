@@ -55,10 +55,7 @@ class Pdf {
 	public function download($filename = 'dompdf_out', $options = array('compress' => 1, 'Attachment' => 1)){
 		$this->render();
 		$this->clear();
-		return new Response($this->dompdf->stream($filename.'.pdf', $options), 200, array(
-                    'Content-Type' => 'application/pdf',
-                    'Content-Disposition' =>  'attachment; filename="'.$filename.'"'
-                ));
+		return new Response($this->dompdf->stream($filename.'.pdf', $options), 200);
 	}
 
 	public function output($options = array('compress' => 1)){
